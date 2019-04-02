@@ -1,0 +1,11 @@
+ filename2 = '/run/media/ziyuan/datashare/study2017/grouping/groupKL/AMC_10/Spinal_cordT10S1.mhd';  
+ [img2, ifo] = read_mhd(filename2);
+ struct3D = img2.data;
+ structXZ = squeeze(sum(struct3D,2));
+ offsetXZ = [ifo.Offset(1),ifo.Offset(3)]
+ sig_z = squeeze(sum(structXZ,1));
+ sig_x = squeeze(sum(structXZ,2));
+ T1_cord_z = find(sig_z,1,'last')*img2.spacing(1)+img2.origin(3);
+ S1_cord_z = find(sig_z,1,'first')*img2.spacing(1)+img2.origin(3);
+ T1_cord_z = find(sig_z,1,'last')*img2.spacing(1);
+ S1_cord_z = find(sig_z,1,'first')*img2.spacing(1);
